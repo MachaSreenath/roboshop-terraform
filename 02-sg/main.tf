@@ -18,6 +18,16 @@ module "redis" {
   # sg_ingress_rules = var.redis_sg_ingress_rules
 }
 
+module "mysql" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for mysql"
+  sg_name = "mysql"
+  # sg_ingress_rules = var.mysql_sg_ingress_rules
+}
+
 module "catalogue" {
   source = "../../terraform-aws-security-group"
   project_name = var.project_name
