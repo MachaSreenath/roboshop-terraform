@@ -30,19 +30,19 @@ module "user" {
 
 # mongodb accepting connections from catalogue instance 
 resource "aws_security_group_rule" "mongodb_catalogue" {
-  source_security_group_id = module.mongodb.sg_id
+  source_security_group_id = module.catalogue.sg_id
   type = "ingress"
   from_port = 27017
   to_port = 27017
   protocol = "tcp"
-  security_group_id = module.catalogue.sg_id
+  security_group_id = module.mongodb.sg_id
 }
 
 resource "aws_security_group_rule" "mongodb_user" {
-  source_security_group_id = module.mongodb.sg_id
+  source_security_group_id = module.user.sg_id
   type = "ingress"
   from_port = 27017
   to_port = 27017
   protocol = "tcp"
-  security_group_id = module.user.sg_id
+  security_group_id = module.mongodb.sg_id
 }
