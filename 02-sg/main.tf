@@ -58,6 +58,16 @@ module "user" {
   # sg_ingress_rules = var.user_sg_ingress_rules
 }
 
+module "cart" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for cart"
+  sg_name = "cart"
+  # sg_ingress_rules = var.cart_sg_ingress_rules
+}
+
 # mongodb accepting connections from catalogue instance 
 resource "aws_security_group_rule" "mongodb_catalogue" {
   source_security_group_id = module.catalogue.sg_id
