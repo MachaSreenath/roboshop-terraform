@@ -78,7 +78,25 @@ module "shipping" {
   # sg_ingress_rules = var.shipping_sg_ingress_rules
 }
 
+module "payment" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for payment"
+  sg_name = "payment"
+  # sg_ingress_rules = var.payment_sg_ingress_rules
+}
 
+module "web" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for web"
+  sg_name = "web"
+  # sg_ingress_rules = var.web_sg_ingress_rules
+}
 
 # mongodb accepting connections from catalogue instance 
 resource "aws_security_group_rule" "mongodb_catalogue" {
