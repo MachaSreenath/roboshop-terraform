@@ -28,6 +28,16 @@ module "mysql" {
   # sg_ingress_rules = var.mysql_sg_ingress_rules
 }
 
+module "rabbitmq" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for rabbitmq"
+  sg_name = "rabbitmq"
+  # sg_ingress_rules = var.rabbitmq_sg_ingress_rules
+}
+
 module "catalogue" {
   source = "../../terraform-aws-security-group"
   project_name = var.project_name
