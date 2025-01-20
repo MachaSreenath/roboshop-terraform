@@ -1,3 +1,13 @@
+module "vpn" {
+  source = "../../terraform-aws-security-group"
+  project_name = var.project_name
+  environment = var.environment
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  sg_description = "Security group for VPN"
+  sg_name = "vpn"
+  # sg_ingress_rules = var.mongodb_sg_ingress_rules
+}
+
 module "mongodb" {
   source = "../../terraform-aws-security-group"
   project_name = var.project_name
@@ -97,6 +107,17 @@ module "web" {
   sg_name = "web"
   # sg_ingress_rules = var.web_sg_ingress_rules
 }
+
+#openvpn
+resource "aws_security_group_rule" "mongodb_catalogue" {
+  security_group_id = module.vpn.sg_id
+  type = "ingress"
+  from_port = 22
+  to_port = 22
+  protocol = "tcp"
+  cidr_blocks = ["0.0.0.0/0"] #ideally your home public ip address, but it frequently changes 
+}
+
 
 # mongodb accepting connections from catalogue instance 
 resource "aws_security_group_rule" "mongodb_catalogue" {

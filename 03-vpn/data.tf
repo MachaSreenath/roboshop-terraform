@@ -27,6 +27,6 @@ data "aws_subnet" "selected" {
   availability_zone = "us-east-1a"
 }
 
-output "vpc_info" {
-  value = data.aws_subnet.selected.id
-}
+# output "vpc_info" {
+#   value = data.aws_subnet.selected.id
+# }

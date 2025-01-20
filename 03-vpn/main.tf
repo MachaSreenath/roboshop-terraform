@@ -4,6 +4,7 @@ module "ec2_instance" {
     name = "${local.ec2_name}-vpn"
     instance_type = "t3.small"
     vpc_security_group_ids = [data.aws_ssm_parameter.mongodb_sg_id.value]
+    subnet_id = data.aws_subnet.selected.id
     tags = merge(
       var.common_tags,
       {
