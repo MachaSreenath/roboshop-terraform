@@ -2,10 +2,10 @@ module "vpn" {
   source = "../../terraform-aws-security-group"
   project_name = var.project_name
   environment = var.environment
-  vpc_id = data.aws_ssm_parameter.vpc_id.value
+  vpc_id = data.aws_vpc.default.id
   sg_description = "Security group for VPN"
   sg_name = "vpn"
-  # sg_ingress_rules = var.mongodb_sg_ingress_rules
+  # sg_ingress_rules = var.vpn_sg_ingress_rules
 }
 
 module "mongodb" {
