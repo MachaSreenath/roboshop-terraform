@@ -109,7 +109,7 @@ module "web" {
 }
 
 #openvpn
-resource "aws_security_group_rule" "mongodb_catalogue" {
+resource "aws_security_group_rule" "vpn_home" {
   security_group_id = module.vpn.sg_id
   type = "ingress"
   from_port = 22
