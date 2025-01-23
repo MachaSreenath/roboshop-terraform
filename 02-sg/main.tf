@@ -118,6 +118,7 @@ resource "aws_security_group_rule" "vpn_home" {
   cidr_blocks = ["0.0.0.0/0"] #ideally your home public ip address, but it frequently changes 
 }
 
+# mongodb is accepting connections from vpn installed instance
 resource "aws_security_group_rule" "mongodb_vpn" {
   source_security_group_id = module.vpn.sg_id
   type = "ingress"
