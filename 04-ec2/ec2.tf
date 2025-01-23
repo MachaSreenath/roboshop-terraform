@@ -177,3 +177,91 @@ module "web" {
       }
   )
 }
+
+module "records" {
+  source  = "terraform-aws-modules/route53/aws//modules/records"
+  zone_name = var.zone_name
+
+  records = [
+    {
+      name    = "mongodb.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.mongodb.private_ip}",
+      ]
+    },
+    {
+      name    = "redis.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.redis.private_ip}",
+      ]
+    },
+    {
+      name    = "mysql.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.mysql.private_ip}",
+      ]
+    },
+    {
+      name    = "rabbitmq.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.rabbitmq.private_ip}",
+      ]
+    },
+    {
+      name    = "catalogue.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.catalogue.private_ip}",
+      ]
+    },
+    {
+      name    = "user.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.user.private_ip}",
+      ]
+    },
+    {
+      name    = "cart.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.cart.private_ip}",
+      ]
+    },
+    {
+      name    = "shipping.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.shipping.private_ip}",
+      ]
+    },
+    {
+      name    = "payment.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.payment.private_ip}",
+      ]
+    },
+    {
+      name    = "web.forpractice.uno"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.web.private_ip}",
+      ]
+    },
+  ]
+}
