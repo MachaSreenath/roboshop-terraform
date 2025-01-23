@@ -113,8 +113,8 @@ resource "aws_security_group_rule" "vpn_home" {
   security_group_id = module.vpn.sg_id
   type = "ingress"
   from_port = 0
-  to_port = 0
-  protocol = "tcp"
+  to_port = 65535
+  protocol = "-1"
   cidr_blocks = ["0.0.0.0/0"] #ideally your home public ip address, but it frequently changes 
 }
 
