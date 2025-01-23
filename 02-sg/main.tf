@@ -118,6 +118,14 @@ resource "aws_security_group_rule" "vpn_home" {
   cidr_blocks = ["0.0.0.0/0"] #ideally your home public ip address, but it frequently changes 
 }
 
+resource "aws_security_group_rule" "mongodb_vpn" {
+  source_security_group_id = module.vpn.sg_id
+  type = "ingress"
+  from_port = 22
+  to_port = 22
+  protocol = "tcp"
+  security_group_id = module.mongodb.sg_id
+}
 
 # mongodb accepting connections from catalogue instance 
 resource "aws_security_group_rule" "mongodb_catalogue" {
