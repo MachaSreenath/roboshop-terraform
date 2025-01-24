@@ -202,7 +202,7 @@ module "records" {
 
   records = [
     {
-      name    = "mongodb.forpractice.uno"
+      name    = "mongodb"
       type    = "A"
       ttl     = 1
       records = [
@@ -210,7 +210,7 @@ module "records" {
       ]
     },
     {
-      name    = "redis.forpractice.uno"
+      name    = "redis"
       type    = "A"
       ttl     = 1
       records = [
@@ -218,7 +218,7 @@ module "records" {
       ]
     },
     {
-      name    = "mysql.forpractice.uno"
+      name    = "mysql"
       type    = "A"
       ttl     = 1
       records = [
@@ -226,7 +226,7 @@ module "records" {
       ]
     },
     {
-      name    = "rabbitmq.forpractice.uno"
+      name    = "rabbitmq"
       type    = "A"
       ttl     = 1
       records = [
@@ -234,7 +234,7 @@ module "records" {
       ]
     },
     {
-      name    = "catalogue.forpractice.uno"
+      name    = "catalogue"
       type    = "A"
       ttl     = 1
       records = [
@@ -242,7 +242,7 @@ module "records" {
       ]
     },
     {
-      name    = "user.forpractice.uno"
+      name    = "user"
       type    = "A"
       ttl     = 1
       records = [
@@ -250,7 +250,7 @@ module "records" {
       ]
     },
     {
-      name    = "cart.forpractice.uno"
+      name    = "cart"
       type    = "A"
       ttl     = 1
       records = [
@@ -258,7 +258,7 @@ module "records" {
       ]
     },
     {
-      name    = "shipping.forpractice.uno"
+      name    = "shipping"
       type    = "A"
       ttl     = 1
       records = [
@@ -266,7 +266,7 @@ module "records" {
       ]
     },
     {
-      name    = "payment.forpractice.uno"
+      name    = "payment"
       type    = "A"
       ttl     = 1
       records = [
@@ -274,7 +274,7 @@ module "records" {
       ]
     },
     {
-      name    = "web.forpractice.uno"
+      name    = "web"
       type    = "A"
       ttl     = 1
       records = [
